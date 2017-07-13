@@ -1,0 +1,61 @@
+% !TEX root = python3_cheetsheet.tex
+
+\section{入出力}
+
+\subsection{文字列}
+
+ある文字列Sを読み込む際は\texttt{input()}を用いる。
+
+\begin{lstlisting}[language=Python]
+  S = input()
+\end{lstlisting}
+
+\subsection{数値(int or float)}
+
+整数及び浮動小数点を読み込みたい場合は\texttt{input()}で文字列として
+読み込んだ後、\texttt{int}でキャストしてやればいい。
+
+\begin{lstlisting}[language=Python]
+  N = int(input())
+\end{lstlisting}
+
+\subsection{配列}
+\label{sec:list}
+
+もし、$a_0, a_1, ..., a_n$のような入力を配列として読み込みたい場合は
+\texttt{split()}で切り分けて変数に入れることでおk。
+
+\begin{lstlisting}[language=Python]
+  a = input().split()
+\end{lstlisting}
+
+\newpage
+
+\subsection{数値配列}
+\texttt{split()}したlistをすべて数値として入力させたいときは、
+\texttt{map(int, list)}とすればすべての要素をint型に変換できる。
+
+\begin{lstlisting}[language=Python]
+  a = list(map(int, input().split()))
+\end{lstlisting}
+
+floatなど他の型にもできる。
+
+\begin{lstlisting}[language=Python]
+  a = list(map(float, input().split()))
+\end{lstlisting}
+
+\subsection{一度に複数の変数へ代入}
+
+例えば以下のような入力があったする。
+
+\begin{lstlisting}
+  10 5
+\end{lstlisting}
+
+それぞれの数値を$m$、$r$という変数に代入したい場合、アンパック代入を用いて
+要素ごとに左辺の変数に代入できる。
+
+\begin{lstlisting}[language=Python]
+  m, r = list(map(int, input().split()))
+\end{lstlisting}

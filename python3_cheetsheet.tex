@@ -1,0 +1,108 @@
+\documentclass[uplatex, 11pt]{jsarticle}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{float}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\usepackage{docmute}
+\usepackage{plistings}
+\usepackage{color}
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\lstset{
+  frame=single,
+  tabsize=2,
+  basicstyle=\ttfamily,
+  keepspaces=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  basicstyle=\ttfamily,
+  moredelim=[il][\textcolor{pgrey}]{\$\$},
+  moredelim=[is][\textcolor{pgrey}]{\%\%}{\%\%}
+}
+\hypersetup{
+  pdftitle={ACM ICPC Python3 CheetSheet},
+  pdfauthor={Aya Tokikaze}
+}
+
+\renewcommand{\headfont}{\bfseries}
+\renewcommand\thefootnote{\arabic{footnote}}
+
+\title{ACM ICPC Python3 CheetSheet}
+\author{Aya Tokikaze}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\include{input_and_output}
+
+\section{制御構造}
+
+\subsection{三項演算子}
+pythonでの三項演算子は
+\begin{lstlisting}[language=Python]
+  <条件式がTrueのときの値> if <条件式> else <Falseのときの値>
+\end{lstlisting}
+
+でできる。
+
+\begin{lstlisting}[language=Python]
+  >>> a = True
+  >>> print('wei' if a else 'soiya')
+  wei
+\end{lstlisting}
+
+\subsection{スワップ}
+
+pythonでのスワップはcみたいに値をtmpに突っ込まなくても、以下のようにすればできる。
+
+\begin{lstlisting}[language=Python]
+  a, b = b, a
+\end{lstlisting}
+
+\include{slice}
+
+\section{数値関係}
+
+\subsection{数値の桁数}
+
+\begin{lstlisting}[language=Python]
+  >>> a = 1234567
+  >>> int(math.log10(a) + 1)
+  7
+\end{lstlisting}
+
+\section{文字列とか}
+
+\subsection{0で桁あわせ}
+0埋めの桁合わせをしたいときは一旦strに変換してから\texttt{zfill}メソッドで指定した
+桁数分0埋めできる。
+\begin{lstlisting}[language=Python]
+  # 元のすうち
+  >>> a = 12345
+  # 合わせたい桁
+  >>> l = 7
+  >>> str(a).zfill(l)
+  0012345
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

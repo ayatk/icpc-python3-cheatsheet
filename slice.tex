@@ -1,0 +1,100 @@
+% !TEX root = python3_cheetsheet.tex
+
+\section{スライス}
+スライスは配列や文字列の任意の部分もしくは範囲を取り出す方法。けっこう便利なので
+知っておくべき。
+
+以下のような配列$a$を定義しておく。
+\begin{lstlisting}[language=Python]
+  a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+\end{lstlisting}
+
+\subsection{$N$番目の要素を取り出す}
+
+基本中の基本、説明することはない。
+\begin{lstlisting}[language=Python]
+  a[N]
+
+  >>> a[1]
+  1
+\end{lstlisting}
+
+\subsection{末尾からの取り出し}
+
+負の数を指定すると配列の末尾からの指定になる
+
+\begin{lstlisting}[language=Python]
+  # -1で一番最後
+  >>> a[-1]
+  9
+
+  >>> a[-8:-5]
+  [2, 3, 4]
+
+  # 始点省略
+  >>> a[:-6]
+  [1, 2, 3]
+
+  # 終点省略
+  >>> a[-2:]
+  [8, 9]
+\end{lstlisting}
+
+\newpage
+
+\subsection{$N$番目から$M$番目の要素を取り出す}
+コロンで区切ると範囲指定ができる。
+\begin{lstlisting}[language=Python]
+  # n番目からm-1番目の要素を取り出す
+  a[n:m]
+
+  # 1番目から3番目の要素を取り出す
+  >>> a[1:4]
+  [1, 2, 3]
+
+  # 始点を省略すると0番目から
+  >>> a[:3]
+  [0, 1, 2, 3]
+
+  # 終点を省略すると最後まで
+  >>> a[7:]
+  [7, 8, 9]
+\end{lstlisting}
+
+
+\subsection{ステップ数を指定して取り出し}
+
+奇数項だけ取り出したいときとかにつかう
+
+\begin{lstlisting}[language=Python]
+  # コロンを2個続けるとステップして抜き出します
+  >>> a[::3]
+  [1, 4, 7]
+
+  # もちろん切り出しつつのステップも可能
+  >>> a[2:7:3]
+  [3, 6]
+
+  # 負の数を使って後ろから
+  >>> a[::-3]
+  [9, 6, 3]
+
+  # ややこしい・・・orz
+  >>> a[-2:-8:-3]
+  [8, 5]
+
+  # コロンが2個あって且つ後ろからステップする場合は
+  # 逆順にしてから抜き出してるっぽい
+  # よって以下は何も取り出せない
+  >>> a[-8:-2:-3]
+  []
+\end{lstlisting}
+
+\subsubsection{スライスを用いたリバース}
+\texttt{reversed()}よりもこっち使ったほうが簡潔だしいいと思います。
+
+\begin{lstlisting}[language=Python]
+  # 配列の末尾から取り出し
+  >>> a[::-1]
+  [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+\end{lstlisting}
